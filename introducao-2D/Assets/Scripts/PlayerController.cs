@@ -21,7 +21,12 @@ public class PlayerController : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         float speedY = playerRb.velocity.y;
 
-        playerRb.velocity = new Vector2(h * speed, speedY);
+        if (Input.GetButtonDown("Jump")) // Pular
+        {
+            playerRb.AddForce(new Vector2(0, jumoForce));
+        }
+
+        playerRb.velocity = new Vector2(h * speed, speedY); // Movimentacao do player
 
     }
 }
