@@ -21,6 +21,16 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float h = Input.GetAxisRaw("Horizontal");
+
+        if (h > 0 && isLookLeft == true)
+        {
+            Flip();
+        }
+        else if (h < 0 && isLookLeft == false)
+        {
+            Flip();
+        }
+
         float speedY = playerRb.velocity.y;
 
         if (Input.GetButtonDown("Jump")) // Pular
