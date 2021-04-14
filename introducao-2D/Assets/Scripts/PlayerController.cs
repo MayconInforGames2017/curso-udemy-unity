@@ -7,7 +7,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D  playerRb;
 
     public float         speed; // Velocidade
-    public float         jumoForce; // Força do pulo    
+    public float         jumoForce; // Força do pulo  
+
+    public bool          isLookLeft; // Virar player a esquerda
 
     // Start is called before the first frame update
     void Start()
@@ -29,4 +31,12 @@ public class PlayerController : MonoBehaviour
         playerRb.velocity = new Vector2(h * speed, speedY); // Movimentacao do player
 
     }
+
+    void Flip()
+    {
+        isLookLeft = !isLookLeft;
+        float x = transform.localScale.x * -1; // Inverte o sinal do X do Scale X
+        transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
+    }
+
 }
