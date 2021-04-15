@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D  playerRb;
+    private Animator     playerAnimator;
 
     public float         speed; // Velocidade
     public float         jumoForce; // Força do pulo  
@@ -14,7 +15,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerRb = GetComponent<Rigidbody2D>();     
+        playerRb = GetComponent<Rigidbody2D>(); 
+        playerAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -39,6 +41,8 @@ public class PlayerController : MonoBehaviour
         }
 
         playerRb.velocity = new Vector2(h * speed, speedY); // Movimentacao do player
+
+        playerAnimator.SetInteger("h", (int) h);
 
     }
 
