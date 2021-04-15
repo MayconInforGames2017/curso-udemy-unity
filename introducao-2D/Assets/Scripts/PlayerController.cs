@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
         playerRb.velocity = new Vector2(h * speed, speedY); // Movimentacao do player
 
         playerAnimator.SetInteger("h", (int) h);
+        playerAnimator.SetBool("isGrounded", isGrounded);
+        playerAnimator.SetFloat("speedY", speedY);
 
     }
 
