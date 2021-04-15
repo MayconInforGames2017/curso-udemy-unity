@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
 
     public bool          isLookLeft; // Virar player a esquerda
 
+    public Transform     groundCheck;
+    private bool         isGrounded;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
         float speedY = playerRb.velocity.y;
 
-        if (Input.GetButtonDown("Jump")) // Pular
+        if (Input.GetButtonDown("Jump") && isGrounded == true) // Pular
         {
             playerRb.AddForce(new Vector2(0, jumoForce));
         }
@@ -44,6 +47,11 @@ public class PlayerController : MonoBehaviour
 
         playerAnimator.SetInteger("h", (int) h);
 
+    }
+
+    void FixedUpdate()
+    {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.02f);
     }
 
     void Flip()
